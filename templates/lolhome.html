@@ -1,0 +1,77 @@
+<html>
+ <head>
+   <title>Santa's Kudritza Evaluator!</title>
+ </head>
+ <body>
+  <marquee>Santa's Kudritza Evaluator!</marquee>
+  <form action="/lol/" method="post">
+    <textarea rows=32 cols=64 name="prgm">{echo "hello Santa's little helper!"}</textarea>
+    <input type='submit' value='Run Program!'>
+  </form>
+  <pre>Hey everybody! Welcome to Santa's Kudritza Evaluator!
+Now, we know that not everyone is familiar with Kudritza; in fact
+we wouldn't be using it, if it weren't for the fact that some
+shoddy eastern European contractors we had used previously wrote
+everything in Santa's workshop in it, we wouldn't use it either!
+Therefore, we put a simple dev server out on the internet for people
+to test out!
+
+Here's a little sample:
+
+    {define-variable foo 10}
+
+That makes the variable `foo` have the value `10`. Now, in order to
+*use* that value, you call `value` on that symbol:
+
+    {+ {value foo} {value foo}}
+
+Which will return `20`. There's shorthand for `value`, because we 
+use it all the time, and that's `:`
+
+    {+ :foo :foo}
+
+Ok, so here's a short list of forms to remember:
+
+define: defines a variable or function
+set!: set's a value
+if: {if COND THEN-CLAUSE ELSE-CLAUSE}
+unless: {unless COND THEN-CLAUSE}
+when: {when COND THEN-CLAUSE}
+quote: quote a list: '{1 2}
+let: temporary value bind: {let {{x 10}} {sum :x :x}}
+fn: lambda 
++: sum
+-: subtraction
+/: division
+*: multiplication
+&lt;: less than
+&gt;: greater than
+&lt;=: less than or equal to
+&gt;=: greater than or equal to
+=: equal to
+true: a true procedure
+false: a false procedure
+not: negation
+and: conjunction
+or: disjuntion
+list: forms a list from its arguments: {list 1 2 3 4} == '{1 2 3 4}
+head: return the head of a list
+rest: return the rest of the list
+butlast: return everything but the last value in a list
+value: look up the symbol in the environment return its value
+while: a while loop {while COND WHILE-BODY}
+progn: run a series of statements: {progn ITEM0 ITEM1 ... ITEMN} return statement is the value of ITEMN
+define-variable: define a variable
+echo: print a value
+image: create an image tag
+divider: create a div tag
+paragraph: create a paragraph tag
+bold: create a bold tag
+
+And that's it!
+
+Oh, and don't forget, the configuration adds some helpful variables, so if you get stuck, remembery you can
+list-variables
+    </pre>
+  </body>
+</html>
