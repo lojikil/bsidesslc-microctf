@@ -1,4 +1,4 @@
-from bottle import route, request, run
+from bottle import route, request, run, hook, redirect
 import kudritza
 import os
 from ast import literal_eval
@@ -6,6 +6,14 @@ from ast import literal_eval
 
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 template_cache = {}
+
+@hook('before_request')
+def hostcheck():
+    val = request.get_header('Host', 'nope')
+
+    if request.urlparts.path != '/nope':
+        if not val.startswith('santais.sexy'):
+            redirect('/nope')
 
 
 @route('/lol', method=['post', 'get'])
@@ -43,8 +51,12 @@ def lolloader(name):
     filename = parts[-1]
     return lolscript.re_file(filename, root)
 
+@route('/nope')
+def nope():
+    return template_cache['nope']
 
-for name in ['lolhome', 'index']:
+
+for name in ['lolhome', 'index', 'nope']:
     with file('./templates/{0}.html'.format(name), 'r') as fh:
         template_cache[name] = fh.read()
 

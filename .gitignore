@@ -1,3 +1,4 @@
 ip2bf
 *.swp
 *.pyc
+logs/*.log
