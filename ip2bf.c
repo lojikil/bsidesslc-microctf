@@ -1,9 +1,8 @@
 #include <stdio.h>
+#include <string.h>
 
 void
 printdelta(int delta) {
-    int idx = 0;
-
     if(delta < 0) {
         for(; delta < 0; delta++) {
             printf("+");
