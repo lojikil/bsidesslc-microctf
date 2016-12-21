@@ -1,0 +1,5 @@
+C:\dev\GuidMaker\GuidMaker\bin\Release\GuidMaker.exe.config
+C:\dev\GuidMaker\GuidMaker\bin\Release\GuidMaker.exe
+C:\dev\GuidMaker\GuidMaker\bin\Release\GuidMaker.pdb
+C:\dev\GuidMaker\GuidMaker\obj\Release\GuidMaker.exe
+C:\dev\GuidMaker\GuidMaker\obj\Release\GuidMaker.pdb
