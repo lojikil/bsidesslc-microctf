@@ -1,0 +1,6 @@
+C:\dev\GuidMaker\GuidMaker\bin\Debug\GuidMaker.exe.config
+C:\dev\GuidMaker\GuidMaker\bin\Debug\GuidMaker.exe
+C:\dev\GuidMaker\GuidMaker\bin\Debug\GuidMaker.pdb
+C:\dev\GuidMaker\GuidMaker\obj\Debug\GuidMaker.csprojResolveAssemblyReference.cache
+C:\dev\GuidMaker\GuidMaker\obj\Debug\GuidMaker.exe
+C:\dev\GuidMaker\GuidMaker\obj\Debug\GuidMaker.pdb
