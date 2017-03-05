@@ -2,3 +2,6 @@ ip2bf
 *.swp
 *.pyc
 logs/*.log
+users/*
+keys/*
+data/
