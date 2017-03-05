@@ -2,9 +2,13 @@
 
 a tiny, 1-hour CTF written in sleep-dep mode on the plane. Let's make hacking great again.
 
+## BSides SLC mods
+
+[Seth](https://github.com/sethlaw) asked for some help for a BSides SLC version. so here we go
+
 # levels:
 
-Mission: find the nVisium member who is Santa
+Mission: get the sysop key
 
 ## level 0
 
@@ -16,10 +20,20 @@ the host is up, but you need to have a name associated with it; name is revealed
 
 ## level 2
 
-Santa's API system, run's Kudritza code; Kudritza code has a special mode to dump all UUIDs
+create a login (no actual vuln), but people will waste time I'm sure.
 
 ## level 3
+
+SysOp's API system, run's Kudritza code; Kudritza code has a special mode to dump all UUIDs
+
+## level 4
+
+IDOR key system
 
 UUID validator, but there's something wrong with your UUID...
 
 (it's ROT13(base64(uuid)))
+
+## level 5
+
+use key from key system to access "admin panel"
