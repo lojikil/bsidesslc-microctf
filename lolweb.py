@@ -83,7 +83,7 @@ def signup():
 def lolhome():
     if request.method == "POST":
         prgm = kudritza.read(request.POST.get("prgm", ''))[0]
-        return kudritza.keval(prgm, {"uuids":envuuids})
+        return kudritza.keval(prgm, {'keys': 'removed; use get-keys'})
     else:
         return template_cache['lolhome']
 
@@ -91,18 +91,29 @@ def lolhome():
 def validate():
     val = request.GET.get('value', '')
     user = request.GET.get('user', '')
+    authsuccess = False
 
     try:
         if val is None or val is '':
             return "Try passing 'value' as a query parameter"
         elif user is None or user is '':
             return "Try passing 'user' as a query parameter"
-        dval = literal_eval(val.decode('base64'))
-        if dval[0] == 'admin' and dval[1] == '41b28e17133a45088c8c5781ecb6204d':
-            redirect('/key')
-        return "Nope, Not Santa!"
+        dval = val.decode('base64')
+        if user == 'admin' and dval == '41b28e17133a45088c8c5781ecb6204d':
+            authsuccess = True
+        else:
+            return "Nope, not an administrator"
     except:
-        return "Nope, Not Santa!"
+        return "Incorrect key format"
+    if authsuccess:
+        return redirect('/win')
+    return "Hmm. Nope, not valid"
+
+
+@route('/win')
+def win():
+    return "<b>You are the Winrar... but how come you didn't just force browse here?</b>"
+
 
 @route('/')
 def index():

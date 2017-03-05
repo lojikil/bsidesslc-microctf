@@ -3,6 +3,7 @@
 import cgi
 import copy
 import sys
+import re
 
 # this is a simple, Curl (the programming language) like language.
 # basically, we're looking for a tiny Scheme-ish language for the CTF, that
@@ -42,6 +43,9 @@ import sys
 # ok with that. Makes the CTF more fun ;)
 
 # Update: named it kudrtiza, or "Curl"
+
+
+stripusername = re.compile('[^a-zA-Z0-9]*')
 
 
 class KudritzaTypeClash(Exception):
@@ -225,7 +229,14 @@ def keval(obj, env={}):
 
         elif head == "fn":
             return KudritzaProcedure(rest[0], rest[1:], copy.copy(env))
-
+        elif head == "get-keys":
+            first = keval(rest[0], env)
+            if type(first) is not str:
+                raise KudritzaTypeClash()
+            first = stripusername.sub("", first)
+            with file('./keys/{0}.dat'.format(first)) as fh:
+                data = fh.read().strip()
+                return data.encode('base64').encode('rot13')
         elif head == "+":
             first = keval(rest[0], env)
             secnd = keval(rest[1], env)
