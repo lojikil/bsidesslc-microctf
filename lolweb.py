@@ -89,14 +89,17 @@ def lolhome():
 
 @route('/validate')
 def validate():
-    val = request.GET.get('value')
+    val = request.GET.get('value', '')
+    user = request.GET.get('user', '')
+
     try:
         if val is None or val is '':
             return "Try passing 'value' as a query parameter"
+        elif user is None or user is '':
+            return "Try passing 'user' as a query parameter"
         dval = literal_eval(val.decode('base64'))
-        if type(dval) is tuple:
-            if dval[0] == 'SinterKlaas' and dval[1] == '05d6c968-ab39-48f1-abe5-f26262bb1a96':
-                return "Yes, you found Santa Claus!"
+        if dval[0] == 'admin' and dval[1] == '41b28e17133a45088c8c5781ecb6204d':
+            redirect('/key')
         return "Nope, Not Santa!"
     except:
         return "Nope, Not Santa!"
