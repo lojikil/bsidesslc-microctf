@@ -112,7 +112,7 @@ def validate():
 
 @route('/win')
 def win():
-    return "<b>You are the Winrar... but how come you didn't just force browse here?</b>"
+    return "<html><body><center><b>You are the Winrar... but how come you didn't just force browse here?</b><hr>KEY:IamtheBSidesSLCWINRAR</hr></center></body>"
 
 
 @route('/')
