@@ -24,7 +24,10 @@ def hostcheck():
 
     if path != '/login' and path != '/signup' and path != '/nope':
         if 'loggedin' not in session or session['loggedin'] != True:
-            redirect('/login')
+            if path != '/win':
+                redirect('/login')
+        elif path == '/win':
+            redirect('/lose')
 
 @route('/login', method=['post', 'get'])
 def login():
@@ -98,6 +101,7 @@ def validate():
             return "Try passing 'value' as a query parameter"
         elif user is None or user is '':
             return "Try passing 'user' as a query parameter"
+
         dval = val.decode('base64')
         if user == 'admin' and dval == '41b28e17133a45088c8c5781ecb6204d':
             authsuccess = True
@@ -109,6 +113,10 @@ def validate():
         return redirect('/win')
     return "Hmm. Nope, not valid"
 
+
+@route('/lose')
+def lose():
+    return "<html><body><center>The only winning move is to not play the game at all...</center></body></html>"
 
 @route('/win')
 def win():
