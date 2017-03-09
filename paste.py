@@ -3,6 +3,7 @@ from bottle import run, app
 from paste.translogger import TransLogger
 import logging
 import time
+from beaker.middleware import SessionMiddleware
 
 start_stamp = time.ctime().replace(' ', '-')
 
