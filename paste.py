@@ -13,6 +13,13 @@ wsgil = logging.getLogger('wsgi')
 ch = logging.FileHandler("logs/wsgi-{0}.log".format(start_stamp))
 wsgil.addHandler(ch)
 app = TransLogger(app())
+session_opts = {
+    'session.type': 'file',
+    'session.cookie_expires': 300,
+    'session.data_dir': './data',
+    'session.auto': True
+}
+app = SessionMiddleware(app(), session_opts)
 
 run(port=8080,
     host='0.0.0.0',
