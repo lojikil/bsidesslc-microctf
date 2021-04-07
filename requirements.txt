@@ -1,5 +1,5 @@
 Beaker==1.8.1
-bottle==0.12.11
+bottle==0.12.19
 funcsigs==1.0.2
 Jinja2==2.10.1
 MarkupSafe==0.23
